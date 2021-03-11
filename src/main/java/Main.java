@@ -14,17 +14,14 @@ import java.util.regex.Pattern;
 public class Main {
     public static void main(String[] args) throws Exception {
         Document page = siteConnection.getPage();
-        Element nameOfTournament = page.select("section[class=content]").first();
-        Elements names = nameOfTournament.select("table[class=match-center-table]");
-        Element date = nameOfTournament.select("p[class=match-date]").first();
-        Elements tournament = page.select("div[class=match-name]");
+        Elements forName = page.select("section[class=content]");
+        Elements names = forName.select("table[class=match-center-table]");
+        Element date = forName.select("p[class=match-date]").first();
         Elements nameLine = names.select("tr");
         String stringDate = date.text();
         System.out.println("                 "+ defineRightDate.getRightDate(stringDate));
         int j =0;
         for(int i = 0; i < names.size(); i++){
-            String numTournaments = tournament.select("div[class=match-name]").text();
-            System.out.println("       "+numTournaments);
             System.out.println("Время    Команда №1    Счет    Команда №2");
             do {
                 Element row = nameLine.get(j);
@@ -38,5 +35,6 @@ public class Main {
             }while(j<0);
             j++;
         }
+
     }
 }
