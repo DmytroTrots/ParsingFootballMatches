@@ -22,8 +22,8 @@ public class Main {
         String stringDate = date.text();
         System.out.println("                 "+ defineRightDate.getRightDate(stringDate));
         int j =0;
-        for(Element tournaments : tournament){
-            String numTournaments = tournaments.select("div[class=match-name]").text();
+        for(int i = 0; i < names.size(); i++){
+            String numTournaments = tournament.select("div[class=match-name]").text();
             System.out.println("       "+numTournaments);
             System.out.println("Время    Команда №1    Счет    Команда №2");
             do {
